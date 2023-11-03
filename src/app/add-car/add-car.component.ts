@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Car } from '../model/car.model';
 import { CarService } from '../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { maker } from '../model/maker.model';
+import { Maker } from '../model/maker.model';
 
 @Component({
   selector: 'app-add-car',
@@ -10,9 +10,9 @@ import { maker } from '../model/maker.model';
 })
 export class AddCarComponent {
   newCar = new Car();
-  maker!: maker[];
+  maker!: Maker[];
   newIdmaker!: number;
-  newmaker!: maker;
+  newmaker!: Maker;
 
   constructor(private CarService: CarService, private router: Router) {}
 

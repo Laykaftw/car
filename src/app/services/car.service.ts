@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../model/car.model';
-import { maker } from '../model/maker.model';
+import { Maker } from '../model/maker.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
   Cars: Car[] ; // Initialize the Cars array
-  maker : maker[];
+  maker : Maker[];
 
 
   constructor() {
@@ -63,10 +63,10 @@ export class CarService {
       return 0;
     });
     }
-    listemakers():maker[] {
+    listemakers():Maker[] {
       return this.maker;
     }
-    consultermaker(id:number): maker{
+    consultermaker(id:number): Maker{
       return this.maker.find(maker => maker.idmaker == id)!;
     }
 }
