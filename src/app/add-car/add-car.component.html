@@ -26,7 +26,7 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Maker</label>
             <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdCat">
-                <option *ngFor="let cat of categorie" [value]="cat.idCat">
+                <option *ngFor="let cat of maker" [value]="cat.idCat">
                     {{cat.nomCat}}
                 </option>
             </select>

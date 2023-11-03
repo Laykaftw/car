@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CarService } from '../services/car.service';
 import { Car } from '../model/car.model';
-import { Categorie } from '../model/categorie.model';
+import { maker } from '../model/maker.model';
 
 @Component({
   selector: 'app-update-car',
@@ -12,7 +12,7 @@ import { Categorie } from '../model/categorie.model';
 })
 export class UpdateCarComponent {
   currentCar = new Car();
-  categories!: Categorie[];
+  makers!: maker[];
   updatedCatId!: number;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,16 +21,16 @@ export class UpdateCarComponent {
   ) {}
   ngOnInit() {
     // console.log(this.activatedRoute.snapshot.params['id']);
-    this.categories = this.carService.listeCategories();
+    this.makers = this.carService.listemakers();
     this.currentCar = this.carService.consulterCar(
       this.activatedRoute.snapshot.params['id']
     );
-    this.updatedCatId = this.currentCar.categorie.idCat;
+    this.updatedCatId = this.currentCar.maker.idCat;
     // console.log(this.currentCar);
   }
   updateCar() {
     // console.log(this.currentCar);
-    this.currentCar.categorie = this.carService.consulterCategorie(
+    this.currentCar.maker = this.carService.consultermaker(
       this.updatedCatId
     );
     this.carService.updateCar(this.currentCar), this.router.navigate(['cars']);

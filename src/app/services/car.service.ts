@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../model/car.model';
-import { Categorie } from '../model/categorie.model';
+import { maker } from '../model/maker.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
   Cars: Car[] ; // Initialize the Cars array
-  categorie : Categorie[];
+  maker : maker[];
 
 
   constructor() {
-    this.categorie=[
+    this.maker=[
       {idCat:1 ,nomCat: "BMW"},
       {idCat:2 ,nomCat: "Toyota"},
       {idCat:3 ,nomCat: "Honda"}
     ];
     this.Cars = [
-      { idCar: 1, nomCar: "BMW M5cs", CarHp: 635, prixCar: 150000, LaunchDate: new Date("01/03/2021"),categorie: {idCat:1 ,nomCat: "BMW"}},
-      { idCar: 2, nomCar: "Toyota Supra GR", CarHp: 382, prixCar: 60000, LaunchDate: new Date("01/05/2019"), categorie:{idCat:2 ,nomCat: "Toyota"}},
-      { idCar: 3, nomCar: "Honda NSX", CarHp: 274, prixCar: 65000, LaunchDate: new Date("01/11/1990"), categorie:{idCat:3 ,nomCat: "Honda"}},
+      { idCar: 1, nomCar: "BMW M5cs", CarHp: 635, prixCar: 150000, LaunchDate: new Date("01/03/2021"),maker: {idCat:1 ,nomCat: "BMW"}},
+      { idCar: 2, nomCar: "Toyota Supra GR", CarHp: 382, prixCar: 60000, LaunchDate: new Date("01/05/2019"), maker:{idCat:2 ,nomCat: "Toyota"}},
+      { idCar: 3, nomCar: "Honda NSX", CarHp: 274, prixCar: 65000, LaunchDate: new Date("01/11/1990"), maker:{idCat:3 ,nomCat: "Honda"}},
     ];
   }
 
@@ -63,10 +63,10 @@ export class CarService {
       return 0;
     });
     }
-    listeCategories():Categorie[] {
-      return this.categorie;
+    listemakers():maker[] {
+      return this.maker;
     }
-    consulterCategorie(id:number): Categorie{
-      return this.categorie.find(cat => cat.idCat == id)!;
+    consultermaker(id:number): maker{
+      return this.maker.find(cat => cat.idCat == id)!;
     }
 }

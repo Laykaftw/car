@@ -1,4 +1,4 @@
-import { Categorie } from "./categorie.model";
+import { maker } from "./maker.model";
 
 export class Car {
     idCar! : number;
@@ -6,5 +6,5 @@ export class Car {
     CarHp? : number;
     prixCar? : number;
     LaunchDate? : Date ;
-    categorie! : Categorie;
+    maker! : maker;
     }

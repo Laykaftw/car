@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Car } from '../model/car.model';
 import { CarService } from '../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categorie } from '../model/categorie.model';
+import { maker } from '../model/maker.model';
 
 @Component({
   selector: 'app-add-car',
@@ -10,20 +10,20 @@ import { Categorie } from '../model/categorie.model';
 })
 export class AddCarComponent {
   newCar = new Car();
-  categorie!: Categorie[];
+  maker!: maker[];
   newIdCat!: number;
-  newcategorie!: Categorie;
+  newmaker!: maker;
 
   constructor(private CarService: CarService, private router: Router) {}
 
   ngOnInit(): void {
-    this.categorie = this.CarService.listeCategories();
+    this.maker = this.CarService.listemakers();
   }
 
   addCar() {
     // console.log(this.newCar);
-    this.newcategorie=this.CarService.consulterCategorie(this.newIdCat);
-    this.newCar.categorie=this.newcategorie;
+    this.newmaker=this.CarService.consultermaker(this.newIdCat);
+    this.newCar.maker=this.newmaker;
     this.CarService.ajouterCar(this.newCar), this.router.navigate(['cars']);
   }
 }
