@@ -10,7 +10,7 @@
     <td>{{Car.CarHp}}</td>
     <td>{{Car.prixCar}}</td>
     <td>{{Car.LaunchDate | date:'dd/MM/yyyy'}}</td>
-    <td>{{Car.maker.nomCat}}</td>
+    <td>{{Car.maker.nommaker}}</td>
     <td><a class="btn btn-danger" (click)="supprimerCar(Car)">Delete</a></td>
     <td><a class="btn btn-success" [routerLink]="['/updateCar',Car.idCar]">Update</a></td>
     </tr>

@@ -54,12 +54,12 @@
       <label>Maker</label>
       <select
         class="form-control form-control-lg"
-        id="idCat"
-        name="idCat"
-        [(ngModel)]="updatedCatId"
+        id="idmaker"
+        name="idmaker"
+        [(ngModel)]="updatedmakerId"
       >
-        <option *ngFor="let cat of makers" [value]="cat.idCat">
-          {{ cat.nomCat }}
+        <option *ngFor="let maker of makers" [value]="maker.idmaker">
+          {{ maker.nommaker }}
         </option>
       </select>
     </div>

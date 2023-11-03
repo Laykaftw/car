@@ -13,7 +13,7 @@ import { maker } from '../model/maker.model';
 export class UpdateCarComponent {
   currentCar = new Car();
   makers!: maker[];
-  updatedCatId!: number;
+  updatedmakerId!: number;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -25,13 +25,13 @@ export class UpdateCarComponent {
     this.currentCar = this.carService.consulterCar(
       this.activatedRoute.snapshot.params['id']
     );
-    this.updatedCatId = this.currentCar.maker.idCat;
+    this.updatedmakerId = this.currentCar.maker.idmaker;
     // console.log(this.currentCar);
   }
   updateCar() {
     // console.log(this.currentCar);
     this.currentCar.maker = this.carService.consultermaker(
-      this.updatedCatId
+      this.updatedmakerId
     );
     this.carService.updateCar(this.currentCar), this.router.navigate(['cars']);
   }

@@ -12,14 +12,14 @@ export class CarService {
 
   constructor() {
     this.maker=[
-      {idCat:1 ,nomCat: "BMW"},
-      {idCat:2 ,nomCat: "Toyota"},
-      {idCat:3 ,nomCat: "Honda"}
+      {idmaker:1 ,nommaker: "BMW"},
+      {idmaker:2 ,nommaker: "Toyota"},
+      {idmaker:3 ,nommaker: "Honda"}
     ];
     this.Cars = [
-      { idCar: 1, nomCar: "BMW M5cs", CarHp: 635, prixCar: 150000, LaunchDate: new Date("01/03/2021"),maker: {idCat:1 ,nomCat: "BMW"}},
-      { idCar: 2, nomCar: "Toyota Supra GR", CarHp: 382, prixCar: 60000, LaunchDate: new Date("01/05/2019"), maker:{idCat:2 ,nomCat: "Toyota"}},
-      { idCar: 3, nomCar: "Honda NSX", CarHp: 274, prixCar: 65000, LaunchDate: new Date("01/11/1990"), maker:{idCat:3 ,nomCat: "Honda"}},
+      { idCar: 1, nomCar: "BMW M5cs", CarHp: 635, prixCar: 150000, LaunchDate: new Date("01/03/2021"),maker: {idmaker:1 ,nommaker: "BMW"}},
+      { idCar: 2, nomCar: "Toyota Supra GR", CarHp: 382, prixCar: 60000, LaunchDate: new Date("01/05/2019"), maker:{idmaker:2 ,nommaker: "Toyota"}},
+      { idCar: 3, nomCar: "Honda NSX", CarHp: 274, prixCar: 65000, LaunchDate: new Date("01/11/1990"), maker:{idmaker:3 ,nommaker: "Honda"}},
     ];
   }
 
@@ -67,6 +67,6 @@ export class CarService {
       return this.maker;
     }
     consultermaker(id:number): maker{
-      return this.maker.find(cat => cat.idCat == id)!;
+      return this.maker.find(maker => maker.idmaker == id)!;
     }
 }

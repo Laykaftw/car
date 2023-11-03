@@ -11,7 +11,7 @@ import { maker } from '../model/maker.model';
 export class AddCarComponent {
   newCar = new Car();
   maker!: maker[];
-  newIdCat!: number;
+  newIdmaker!: number;
   newmaker!: maker;
 
   constructor(private CarService: CarService, private router: Router) {}
@@ -22,7 +22,7 @@ export class AddCarComponent {
 
   addCar() {
     // console.log(this.newCar);
-    this.newmaker=this.CarService.consultermaker(this.newIdCat);
+    this.newmaker=this.CarService.consultermaker(this.newIdmaker);
     this.newCar.maker=this.newmaker;
     this.CarService.ajouterCar(this.newCar), this.router.navigate(['cars']);
   }
