@@ -18,18 +18,21 @@ export class UpdateCarComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private carService: CarService
-  ) { }
+  ) {}
   ngOnInit() {
     // console.log(this.activatedRoute.snapshot.params['id']);
     this.categories = this.carService.listeCategories();
-    this.currentCar = this.carService.consulterCar(this.activatedRoute.snapshot.params['id']);
+    this.currentCar = this.carService.consulterCar(
+      this.activatedRoute.snapshot.params['id']
+    );
     this.updatedCatId = this.currentCar.categorie.idCat;
     // console.log(this.currentCar);
   }
   updateCar() {
     // console.log(this.currentCar);
-    this.currentCar.categorie=this.carService.consulterCategorie(this.updatedCatId)
-    this.carService.updateCar(this.currentCar), 
-    this.router.navigate(['cars']);
+    this.currentCar.categorie = this.carService.consulterCategorie(
+      this.updatedCatId
+    );
+    this.carService.updateCar(this.currentCar), this.router.navigate(['cars']);
   }
 }
