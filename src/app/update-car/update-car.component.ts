@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CarService } from '../services/car.service';
 import { Car } from '../model/car.model';
-import { Maker } from '../model/maker.model';
+import { maker } from '../model/maker.model';
 
 @Component({
   selector: 'app-update-car',
@@ -12,7 +12,7 @@ import { Maker } from '../model/maker.model';
 })
 export class UpdateCarComponent {
   currentCar = new Car();
-  makers!: Maker[];
+  makers!: maker[];
   updatedmakerId!: number;
   constructor(
     private activatedRoute: ActivatedRoute,

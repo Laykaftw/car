@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../model/car.model';
 import { Maker } from '../model/maker.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-const httpOptions = {
-  headers: new HttpHeaders( {'Content-Type': 'application/json'} )
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
   Cars: Car[] ; // Initialize the Cars array
-  maker : Maker[];
+  maker : maker[];
 
 
   constructor() {
@@ -69,10 +63,10 @@ export class CarService {
       return 0;
     });
     }
-    listemakers():Maker[] {
+    listemakers():maker[] {
       return this.maker;
     }
-    consultermaker(id:number): Maker{
+    consultermaker(id:number): maker{
       return this.maker.find(maker => maker.idmaker == id)!;
     }
 }

@@ -6,7 +6,6 @@ import { CarsComponent } from './cars/cars.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateCarComponent } from './update-car/update-car.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
