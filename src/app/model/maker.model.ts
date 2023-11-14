@@ -1,4 +1,4 @@
-export class maker {
+export class Maker {
     idmaker! : number; // ou idmaker? : number;
     nommaker! : string;
     }
