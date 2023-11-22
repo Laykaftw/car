@@ -3,13 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarsComponent } from './cars/cars.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { UpdateCarComponent } from './update-car/update-car.component';
+import { LoginComponent } from './login/login.component';
+import { CarGuard } from './car.guard';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 const routes: Routes = [
   {path: "cars", component : CarsComponent},
   {path: "add-car", component : AddCarComponent},
   { path: "", redirectTo: "cars", pathMatch: "full" },
-  {path: "updateCar/:id", component: UpdateCarComponent}
+  {path: "updateCar/:id", component: UpdateCarComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'app-forbidden', component: ForbiddenComponent},
+  {path : "add-car", component : AddCarComponent, canActivate:[CarGuard]},
+
   ];
 
 @NgModule({

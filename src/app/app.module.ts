@@ -6,6 +6,8 @@ import { CarsComponent } from './cars/cars.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateCarComponent } from './update-car/update-car.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { UpdateCarComponent } from './update-car/update-car.component';
     CarsComponent,
     AddCarComponent,
     AddCarComponent,
-    UpdateCarComponent
+    UpdateCarComponent,
+    LoginComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
