@@ -13,16 +13,17 @@ import { AuthService } from './services/auth.service';
   providedIn: 'root',
 })
 export class CarGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
-
-  canActivate(
+  constructor (private authService: AuthService,
+    private router : Router) {}
+    canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    if (this.authService.isAdmin()) return true;
-    else {
-      this.router.navigate(['app-forbidden']);
-      return false;
+    state: RouterStateSnapshot): boolean {
+    if (this.authService.isAdmin())
+    return true;
+    else
+    {
+    this.router.navigate(['app-forbidden']);
+    return false;
     }
   }
 }

@@ -10,6 +10,8 @@ export class AuthService {
   users: User[] = [
     { username: 'admin', password: '123', roles: ['ADMIN'] },
     { username: 'azer', password: '123', roles: ['USER'] },
+    { username: 'ftw', password: '123', roles: ['AGENT'] },
+
   ];
   public loggedUser!: string;
   public isloggedIn: Boolean = false;
@@ -46,6 +48,12 @@ export class AuthService {
       //this.roles== undefiened
       return false;
     return this.roles.indexOf('ADMIN') > -1;
+  }
+  isAgent(): Boolean {
+    if (!this.roles)
+      //this.roles== undefiened
+      return false;
+    return this.roles.indexOf('AGENT') > -1;
   }
   setLoggedUserFromLocalStorage(login : string) {
     this.loggedUser = login;

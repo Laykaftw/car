@@ -21,7 +21,7 @@
           Cars
         </a>
         <div class="dropdown-menu">
-          <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="add-car">Add Car</a>
+          <a *ngIf="authService.isAdmin()  ||  authService.isAgent()" class="dropdown-item" routerLink="add-car">Add Car</a>
           <a class="dropdown-item" href="#">Car List</a>
         </div>
       </li>

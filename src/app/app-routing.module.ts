@@ -7,20 +7,17 @@ import { LoginComponent } from './login/login.component';
 import { CarGuard } from './car.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 
-
 const routes: Routes = [
-  {path: "cars", component : CarsComponent},
-  {path: "add-car", component : AddCarComponent},
-  { path: "", redirectTo: "cars", pathMatch: "full" },
-  {path: "updateCar/:id", component: UpdateCarComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'app-forbidden', component: ForbiddenComponent},
-  {path : "add-car", component : AddCarComponent, canActivate:[CarGuard]},
-
-  ];
+  { path: 'cars', component: CarsComponent },
+  { path: '', redirectTo: 'cars', pathMatch: 'full' },
+  { path: 'updateCar/:id', component: UpdateCarComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'app-forbidden', component: ForbiddenComponent },
+  { path: 'add-car', component: AddCarComponent, canActivate: [CarGuard] },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

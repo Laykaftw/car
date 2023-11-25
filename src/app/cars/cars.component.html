@@ -12,7 +12,7 @@
     <td>{{Car.LaunchDate | date:'dd/MM/yyyy'}}</td>
     <td>{{Car.maker.nommaker}}</td>
     <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerCar(Car)">Delete</a></td>
-    <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateCar',Car.idCar]">Update</a></td>
+    <td><a *ngIf="authService.isAdmin()  ||  authService.isAgent()" class="btn btn-success" [routerLink]="['/updateCar',Car.idCar]">Update</a></td>
     </tr>
     </tbody>
     </table>
