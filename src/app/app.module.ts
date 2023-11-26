@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { UpdateCarComponent } from './update-car/update-car.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RechercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     AddCarComponent,
     UpdateCarComponent,
     LoginComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    RechercheParCategorieComponent
   ],
   imports: [
     BrowserModule,
