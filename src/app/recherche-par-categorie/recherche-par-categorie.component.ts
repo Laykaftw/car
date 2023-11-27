@@ -9,7 +9,7 @@ import { CarService } from '../services/car.service';
   styleUrls: [],
 })
 export class RechercheParCategorieComponent implements OnInit {
-  makername!: string;
+  idmake!: number;
   Maker!: Maker[];
   Cars_filtred!: Car[];
 
@@ -21,6 +21,6 @@ export class RechercheParCategorieComponent implements OnInit {
   }
 
   onChange() {
-    this.Cars_filtred = this.carService.rechercherParCategorie(this.makername);
+    this.Cars_filtred = this.carService.rechercherParCategorie(this.idmake);
   }
 }

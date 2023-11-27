@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { CarGuard } from './car.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { RechercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'app-forbidden', component: ForbiddenComponent },
   { path: 'add-car', component: AddCarComponent, canActivate: [CarGuard] },
   {path: "rechercheParCategorie", component : RechercheParCategorieComponent},
+  {path :"rechercheParNom", component : RechercheParNomComponent}
 ];
 
 @NgModule({

@@ -87,15 +87,11 @@ export class CarService {
   consultermaker(id: number): Maker {
     return this.maker.find((maker) => maker.idmaker == id)!;
   }
-  rechercherParCategorie(makername: string): Car[] {
-    console.log('Filtering by makerId:', makername);
-
-    const filteredCars = this.Cars.filter(
-      (car) => car.maker.nommaker === makername
-    );
-
-    console.log('Filtered cars:', filteredCars);
-
-    return filteredCars;
+  rechercherParCategorie(idmake: number): Car[] {
+    return this.Cars.filter((car) => car.maker.idmaker == idmake);
   }
+  rechercherParNom(nom: string): Car[] {
+      return this.Cars.filter((car) => car.nomCar === nom
+      );
+    }
 }
