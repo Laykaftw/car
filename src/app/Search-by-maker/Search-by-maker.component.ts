@@ -5,10 +5,10 @@ import { CarService } from '../services/car.service';
 
 @Component({
   selector: 'app-recherche-par-categorie',
-  templateUrl: './recherche-par-categorie.component.html',
+  templateUrl: './search-by-maker.component.html',
   styleUrls: [],
 })
-export class RechercheParCategorieComponent implements OnInit {
+export class SearchByMakerComponent implements OnInit {
   idmake!: number;
   Maker!: Maker[];
   Cars_filtred!: Car[];

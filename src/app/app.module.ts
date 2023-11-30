@@ -8,8 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { UpdateCarComponent } from './update-car/update-car.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { RechercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
-import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { SearchByMakerComponent } from './Search-by-maker/Search-by-maker.component';
+import { SearchByNameComponent } from './Search-by-name/Search-by-name.component';
 
 
 @NgModule({
@@ -21,8 +21,8 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
     UpdateCarComponent,
     LoginComponent,
     ForbiddenComponent,
-    RechercheParCategorieComponent,
-    RechercheParNomComponent
+    SearchByMakerComponent,
+    SearchByNameComponent
   ],
   imports: [
     BrowserModule,

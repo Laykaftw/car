@@ -4,10 +4,10 @@ import { Car } from '../model/car.model';
 
 @Component({
   selector: 'app-recherche-par-nom',
-  templateUrl: './recherche-par-nom.component.html',
+  templateUrl: './Search-by-name.component.html',
   styleUrls: [],
 })
-export class RechercheParNomComponent implements OnInit{
+export class SearchByNameComponent implements OnInit{
   Cars !: Car[];
   nomcar!: string
   constructor(private carService : CarService) {}
