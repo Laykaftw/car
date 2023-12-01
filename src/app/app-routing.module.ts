@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'app-forbidden', component: ForbiddenComponent },
   { path: 'add-car', component: AddCarComponent, canActivate: [CarGuard] },
   {path: "searchbymaker", component : SearchByMakerComponent},
-  {path :"Searchbyname", component : SearchByNameComponent}
+  {path :"searchbyname", component : SearchByNameComponent}
 ];
 
 @NgModule({

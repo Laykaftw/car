@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { SearchByMakerComponent } from './Search-by-maker/Search-by-maker.component';
 import { SearchByNameComponent } from './Search-by-name/Search-by-name.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SearchByNameComponent } from './Search-by-name/Search-by-name.component
     LoginComponent,
     ForbiddenComponent,
     SearchByMakerComponent,
-    SearchByNameComponent
+    SearchByNameComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

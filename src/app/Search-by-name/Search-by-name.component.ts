@@ -9,6 +9,7 @@ import { Car } from '../model/car.model';
 })
 export class SearchByNameComponent implements OnInit{
   Cars !: Car[];
+  searchTerm !:string;
   nomcar!: string
   constructor(private carService : CarService) {}
 
