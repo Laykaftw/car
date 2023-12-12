@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+        <h2>Adding a piece</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>piece Id</label>
+            <input type="text" [(ngModel)]="newpiece.id" name="idpiece" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>piece Name</label>
+            <input type="text" [(ngModel)]="newpiece.nomPiece" name="nompiece" class="form-control">
+        </div>
+        <div>
+            <label>Price In $</label>
+            <input type="number" [(ngModel)]="newpiece.prixpiece" name="prixpiece" class="form-control">
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addpiece()" class="btn btn-success">Add</button>
+        </div>
+    </form>
+</div>

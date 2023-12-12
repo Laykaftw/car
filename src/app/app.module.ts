@@ -11,6 +11,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { SearchByMakerComponent } from './Search-by-maker/Search-by-maker.component';
 import { SearchByNameComponent } from './Search-by-name/Search-by-name.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { PieceComponent } from './piece/piece.component';
+import { AddpieceComponent } from './add-piece/add-piece.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { SearchFilterPipe } from './search-filter.pipe';
     ForbiddenComponent,
     SearchByMakerComponent,
     SearchByNameComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    PieceComponent,
+    AddpieceComponent
   ],
   imports: [
     BrowserModule,

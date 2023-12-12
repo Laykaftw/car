@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class CarService {
-  Cars: Car[]; // Initialize the Cars array
+  Cars: Car[]; 
   maker: Maker[];
 
   constructor() {
