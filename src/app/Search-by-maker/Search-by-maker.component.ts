@@ -6,21 +6,32 @@ import { CarService } from '../services/car.service';
 @Component({
   selector: 'app-recherche-par-categorie',
   templateUrl: './search-by-maker.component.html',
-  styleUrls: [],
 })
 export class SearchByMakerComponent implements OnInit {
-  idmake!: number;
+  cars: Car[] = [];
   Maker!: Maker[];
-  Cars_filtred!: Car[];
+  IdMaker!: number;
 
   constructor(private carService: CarService) {}
 
   ngOnInit(): void {
-    this.Cars_filtred = this.carService.listeCars(); 
-    this.Maker = this.carService.listemakers();
-  }
+    this.carService.listemakers().subscribe((makrs) => {
+      this.Maker = makrs._embedded.makers;
+      console.log(makrs);
+    });
 
-  onChange() {
-    this.Cars_filtred = this.carService.rechercherParCategorie(this.idmake);
+    this.loadallcars();
+  }
+  private loadallcars(): void {
+    this.carService.listeCars().subscribe((cars) => {
+      this.cars = cars;
+    });
+  }
+  onChange(): void {
+    if (this.IdMaker) {
+      this.carService.rechercherParMaker(this.IdMaker).subscribe((makr) => {
+        this.cars = makr;
+      });
+    }
   }
 }

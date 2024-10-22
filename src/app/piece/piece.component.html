@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="pieced shadow mb-4">
+        <div class="pieced-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tbody *ngFor="let pie of pieces">
+                    <tr>
+                        <td>{{pie.id}}</td>
+                        <td>{{pie.nomPiece}}</td>
+                        <td>{{pie.prixpiece}}</td>
+                        <td><a class="btn btn-danger"
+                                (click)="supprimerpiece(pie)">Delete</a></td>
+                        <td><a  class="btn btn-success"
+                                [routerLink]="['/updatepiece',pie.id]">Update</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -1,20 +1,29 @@
 <div class="container">
     <div class="card shadow mb-4">
-    <div class="card-body">
-    <table class="table table-striped">
-    <tr> <th>Id</th><th>Name</th> <th>Car HP</th><th>Price</th> <th>Launch Date</th><th>Maker</th></tr>
-    <tbody *ngFor="let Car of Cars">
-    <tr >
-    <td>{{Car.idCar}}</td>
-    <td>{{Car.nomCar}}</td>
-    <td>{{Car.CarHp}}</td>
-    <td>{{Car.prixCar}}</td>
-    <td>{{Car.LaunchDate | date:'dd/MM/yyyy'}}</td>
-    <td>{{Car.maker.nommaker}}</td>
-    <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerCar(Car)">Delete</a></td>
-    <td><a *ngIf="authService.isAdmin()  ||  authService.isAgent()" class="btn btn-success" [routerLink]="['/updateCar',Car.idCar]">Update</a></td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Car HP</th>
+                    <th>Price</th>
+                    <th>Launch Date</th>
+                    <th>Maker</th>
+                </tr>
+                <tbody *ngFor="let car of cars">
+                    <tr>
+                        <td>{{car.idCar}}</td>
+                        <td>{{car.nomCar}}</td>
+                        <td>{{car.CarHp}}</td>
+                        <td>{{car.prixCar}}</td>
+                        <td>{{car.LaunchDate | date:'dd/MM/yyyy'}}</td>
+                        <td>{{car.maker.nommaker}}</td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-danger"
+                                (click)="supprimercars(car)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-success"
+                                [routerLink]="['/updatecar',car.idCar]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>

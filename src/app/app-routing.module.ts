@@ -8,6 +8,8 @@ import { CarGuard } from './car.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { SearchByMakerComponent } from './Search-by-maker/Search-by-maker.component';
 import { SearchByNameComponent } from './Search-by-name/Search-by-name.component';
+import { PieceComponent } from './piece/piece.component';
+import { AddpieceComponent } from './add-piece/add-piece.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'app-forbidden', component: ForbiddenComponent },
   { path: 'add-car', component: AddCarComponent, canActivate: [CarGuard] },
   {path: "searchbymaker", component : SearchByMakerComponent},
-  {path :"searchbyname", component : SearchByNameComponent}
+  {path :"searchbyname", component : SearchByNameComponent},
+  {path :"piece",component :PieceComponent},
+  {path :"add-piece", component:AddpieceComponent}
 ];
 
 @NgModule({

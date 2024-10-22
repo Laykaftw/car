@@ -17,13 +17,16 @@ export class AddCarComponent {
   constructor(private CarService: CarService, private router: Router) {}
 
   ngOnInit(): void {
-    this.maker = this.CarService.listemakers();
+    this.CarService.listemakers().subscribe((makrs)=>{
+      this.maker = makrs._embedded.makers;
+      console.log(makrs);
+    })
   }
 
   addCar() {
-    // console.log(this.newCar);
-    this.newmaker=this.CarService.consultermaker(this.newIdmaker);
-    this.newCar.maker=this.newmaker;
-    this.CarService.ajouterCar(this.newCar), this.router.navigate(['cars']);
+    if (!this.maker || this.maker.length === 0) {
+      console.error("Types are not yet loaded. Please wait.");
+      return;
+    }
   }
 }

@@ -1,21 +1,36 @@
 import { Component } from '@angular/core';
 import { User } from '../model/user.model';
-import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: [],
 })
 export class LoginComponent {
   user = new User();
-  erreur = 0;
+  err: number = 0;
+  
   constructor(private authService: AuthService, private router: Router) {}
+
   onLoggedin() {
-    console.log(this.user);
-    let isValidUser: Boolean = this.authService.SignIn(this.user);
-    if (isValidUser) this.router.navigate(['/']);
-    else this.erreur=1;
+    this.authService.login(this.user).subscribe({
+      next: (data) => {
+        let jwToken = data.headers.get('Authorization'); // Get JWT from header
+        console.log('JWT Token:', jwToken);  // Log token to check
+        
+        // Check if the token exists and starts with "Bearer"
+        if (jwToken && jwToken.startsWith('Bearer ')) {
+          this.authService.saveToken(jwToken);  // Save token to local storage
+          this.router.navigate(['/']);
+        } else {
+          console.error('Token not found or invalid format');  // Log error
+          this.err = 1;
+        }
+      },
+      error: (err: any) => {
+        this.err = 1;
+      },
+    });
   }
 }

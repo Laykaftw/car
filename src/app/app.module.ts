@@ -11,7 +11,15 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { SearchByMakerComponent } from './Search-by-maker/Search-by-maker.component';
 import { SearchByNameComponent } from './Search-by-name/Search-by-name.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+<<<<<<< HEAD
+import { AuthService } from './services/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token.interceptor';
+=======
+import { PieceComponent } from './piece/piece.component';
+import { AddpieceComponent } from './add-piece/add-piece.component';
 
+>>>>>>> 046d346a52bc09addddc14fe612e867c3740f088
 
 @NgModule({
   declarations: [
@@ -24,14 +32,17 @@ import { SearchFilterPipe } from './search-filter.pipe';
     ForbiddenComponent,
     SearchByMakerComponent,
     SearchByNameComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+<<<<<<< HEAD
+=======
+    PieceComponent,
+    AddpieceComponent
+>>>>>>> 046d346a52bc09addddc14fe612e867c3740f088
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

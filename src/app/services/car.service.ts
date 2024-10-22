@@ -1,97 +1,89 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth.service';
 import { Car } from '../model/car.model';
 import { Maker } from '../model/maker.model';
-import { Observable, of } from 'rxjs';
+import { MakerWrapped } from '../model/makerWrapped.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
-  Cars: Car[]; // Initialize the Cars array
-  maker: Maker[];
+  apiURLTyp: string = 'http://localhost:8090/Cars/mkr';
+  apiURL: string = 'http://localhost:8090/Cars/api';
 
-  constructor() {
-    this.maker = [
-      { idmaker: 1, nommaker: 'BMW' },
-      { idmaker: 2, nommaker: 'Toyota' },
-      { idmaker: 3, nommaker: 'Honda' },
-    ];
-    this.Cars = [
-      {
-        idCar: 1,
-        nomCar: 'BMW M5cs',
-        CarHp: 635,
-        prixCar: 150000,
-        LaunchDate: new Date('01/03/2021'),
-        maker: { idmaker: 1, nommaker: 'BMW' },
-      },
-      {
-        idCar: 2,
-        nomCar: 'Toyota Supra GR',
-        CarHp: 382,
-        prixCar: 60000,
-        LaunchDate: new Date('01/05/2019'),
-        maker: { idmaker: 2, nommaker: 'Toyota' },
-      },
-      {
-        idCar: 3,
-        nomCar: 'Honda NSX',
-        CarHp: 274,
-        prixCar: 65000,
-        LaunchDate: new Date('01/11/1990'),
-        maker: { idmaker: 3, nommaker: 'Honda' },
-      },
-    ];
-  }
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  listeCars(): Car[] {
-    return this.Cars;
-  }
-
-  ajouterCar(c: Car) {
-    this.Cars.push(c);
-  }
-
-  supprimerCar(c: Car) {
-    const index = this.Cars.indexOf(c);
-    if (index > -1) {
-      this.Cars.splice(index, 1);
+  // Helper function to get JWT token and create headers
+  private createAuthHeaders(): HttpHeaders {
+    let jwt = this.authService.getToken();
+    if (jwt) {
+      return new HttpHeaders({
+        Authorization: 'Bearer ' + jwt,
+        'Content-Type': 'application/json',
+      });
+    } else {
+      console.error('JWT token is undefined');
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
     }
   }
 
-  consulterCar(id: number): Car {
-    return this.Cars.find((p) => p.idCar == id)!;
+  listeCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(this.apiURL + '/all');
   }
 
-  updateCar(c: Car) {
-    // console.log(p);
-    this.supprimerCar(c);
-    this.ajouterCar(c);
-    this.trierCars();
-  }
-
-  trierCars() {
-    this.Cars = this.Cars.sort((n1, n2) => {
-      if (n1.idCar > n2.idCar) {
-        return 1;
-      }
-      if (n1.idCar < n2.idCar) {
-        return -1;
-      }
-      return 0;
+  ajouterCar(c: Car): Observable<Car> {
+    return this.http.post<Car>(this.apiURL + '/add-car', c, {
+      headers: this.createAuthHeaders(),
     });
   }
-  listemakers(): Maker[] {
-    return this.maker;
+
+  supprimerCar(id: number): Observable<void> {
+    const url = `${this.apiURL}/delcar/${id}`;
+    return this.http.delete<void>(url, {
+      headers: this.createAuthHeaders(),
+    });
   }
-  consultermaker(id: number): Maker {
-    return this.maker.find((maker) => maker.idmaker == id)!;
+
+  consulterCar(id: number): Observable<Car> {
+    const url = `${this.apiURL}/getbyid/${id}`;
+    return this.http.get<Car>(url, {
+      headers: this.createAuthHeaders(),
+    });
   }
-  rechercherParCategorie(idmake: number): Car[] {
-    return this.Cars.filter((car) => car.maker.idmaker == idmake);
+
+  updateCar(c: Car): Observable<Car> {
+    return this.http.put<Car>(this.apiURL + '/update-car', c, {
+      headers: this.createAuthHeaders(),
+    });
   }
-  rechercherParNom(nom: string): Car[] {
-      return this.Cars.filter((car) => car.nomCar === nom
-      );
-    }
+
+  listemakers(): Observable<MakerWrapped> {
+    return this.http.get<MakerWrapped>(this.apiURLTyp, {
+      headers: this.createAuthHeaders(),
+    });
+  }
+
+  rechercherParMaker(idmake: number): Observable<Car[]> {
+    const url = `${this.apiURL}/car-by-maker/${idmake}`;
+    return this.http.get<Car[]>(url, {
+      headers: this.createAuthHeaders(),
+    });
+  }
+
+  rechercherParNom(nom: string): Observable<Car[]> {
+    const url = `${this.apiURL}/carByNodel/${nom}`;
+    return this.http.get<Car[]>(url, {
+      headers: this.createAuthHeaders(),
+    });
+  }
+
+  ajouterType(mak: Maker): Observable<Maker> {
+    return this.http.post<Maker>(this.apiURLTyp, mak, {
+      headers: this.createAuthHeaders(),
+    });
+  }
 }

@@ -11,13 +11,31 @@ export class SearchByNameComponent implements OnInit{
   Cars !: Car[];
   searchTerm !:string;
   nomcar!: string
+  allcars!: Car[];
   constructor(private carService : CarService) {}
 
   ngOnInit(): void {
-    this.Cars = this.carService.listeCars(); 
+    // this.cars = this.carService.listecars();
+    this.loadallcars();
+  }
+
+  private loadallcars(): void {
+    this.carService.listeCars
+    ().subscribe((cars) => {
+      this.Cars = cars;
+    });
   }
   
-  rechercherCars() {
-    this.Cars=this.carService.rechercherParNom(this.nomcar)
+  recherchercrs() {
+    this.carService
+      .rechercherParNom(this.nomcar)
+      .subscribe((crs) => {
+        this.Cars = crs;
+      });
+  }
+  onKeyUp(filterText: string) {
+    this.Cars = this.allcars.filter((item) =>
+      item.nomCar!.toLowerCase().includes(filterText)
+    );
   }
 }
